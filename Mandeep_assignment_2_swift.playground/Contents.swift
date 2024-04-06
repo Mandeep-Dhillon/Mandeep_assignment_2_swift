@@ -15,15 +15,19 @@ create an array of customers (Customer, at least 10)
 write a function that takes in a single store location and the collection of customers and prints the email addresses of customers that are within the storeRange (you can use the distance formula from the pizza example)
  */
 
+
+// Defining a Location as struct
 struct Location {
     let x: Int
     let y: Int
 }
 
+// Defining a Customer as struct
 struct CustomerArea {
     let center: Location
     var radius: Double
     
+    // Defining a function to calculate distance between two locations
     func contains(_ location: Location) -> Bool {
         let distanceX = Double(center.x - location.x)
         let distanceY = Double(center.y - location.y)
@@ -44,9 +48,11 @@ struct Customer {
 
 var customers: [Customer] = []
 
+// Creating the store locations
 let storeLocation = Location(x: 3, y: 3)
 let storeArea = CustomerArea(center: storeLocation, radius: 2.5)
 
+// Creating an array of customers
 var cust = Customer(name: "Bob Smith", email: "bob@hotmail.com", phoneNumber: "1243567890", location: Location(x: 1, y: 1))
 customers.append(cust)
 
@@ -80,7 +86,7 @@ customers.append(cust)
 cust = Customer(name: "Timmohty Noshwki", email: "tim@hotmail.com", phoneNumber: "5194876990", location: Location(x: 2, y: 2))
 customers.append(cust)
 
-
+// Function to search customers by email and within store range
 func searchCustomerByEmailWithinRange(searchEmail: String, storeArea: CustomerArea, customers: [Customer]) -> [String] {
     var results: [String] = []
     for cust in customers {
